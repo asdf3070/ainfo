@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="shortcut icon" href="../../images/login_images/favicon.ico"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/bootstrap/easyui.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/global.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/user.css"/>
+
+</head>
+<body class="easyui-layout">
+<div id="search" class="ax_default text_field">
+	<input id="search_input" type="text" style="color: rgb(153, 153, 153);"/>
+</div>
+<div id="u1142" class="ax_default" style="cursor: pointer;">
+	<!-- Unnamed (形状) -->
+	<div id="u1143" class="ax_default icon">
+		<img id="u1143_img" class="img " src="../../images/frame_images/u709.png"/>
+		<!-- Unnamed () -->
+		<div id="u1144" class="text" style="display: none; visibility: hidden">
+			<p>
+				<span></span>
+			</p>
+		</div>
+	</div>
+	<!-- Unnamed (矩形) -->
+	<div id="u1145" class="ax_default box_1 normal" onclick="onSearch()">
+		<div id="u1145_div" class="normal">
+		</div>
+		<!-- Unnamed () -->
+		<div id="u1146" class="text" style="display: none; visibility: hidden">
+			<p id="cache106">
+				<span id="cache107"></span>
+			</p>
+		</div>
+	</div>
+</div>
+<div id="u694" class="ax_default box_1">
+	<div id="u694_div" class="">
+	</div>
+	<!-- Unnamed () -->
+	<div id="u695" class="text" style="display: none; visibility: hidden">
+		<p>
+			<span></span>
+		</p>
+	</div>
+</div>
+<div id="u696" class="ax_default checkbox">
+	<input id="u696_input" type="checkbox" name="ckbox" onchange="checkAll('ckbox')"/>
+</div>
+<div id="u704" class="ax_default label">
+	<div id="u704_div" class="">
+	</div>
+	<!-- Unnamed () -->
+	<div id="u705" class="text" style="visibility: visible;">
+		<p>
+			<span>全选</span>
+		</p>
+	</div>
+</div>
+<div id="u706" class="ax_default button normal" style="cursor: pointer;" onclick="getFunPanel(1)">
+	<img id="u706_img" class="img" src="../../images/user_images/u698.png" />
+	<!-- Unnamed () -->
+	<div id="u707" class="text" style="visibility: visible;">
+		<p id="cache96">
+			<span id="cache97">贴标签</span>
+		</p>
+	</div>
+</div>
+<div id="u698" class="ax_default button normal" style="cursor: pointer;" onclick="getFunPanel(2)">
+	<img id="u698_img" class="img" src="../../images/user_images/u698.png" />
+	<!-- Unnamed () -->
+	<div id="u699" class="text" style="visibility: visible;">
+		<p id="cache106">
+			<span id="cache107">黑名单</span>
+		</p>
+	</div>
+</div>
+<div id="u700" class="ax_default button normal" style="cursor: pointer;" onclick="getFunPanel(3)">
+	<img id="u700_img" class="img" src="../../images/user_images/u698.png" />
+	<!-- Unnamed () -->
+	<div id="u701" class="text" style="visibility: visible;">
+		<p id="cache108">
+			<span id="cache109">处&nbsp; 罚</span>
+		</p>
+	</div>
+</div>
+<div id="u702" class="ax_default button normal" style="cursor: pointer;" onclick="getFunPanel(4)">
+	<img id="u702_img" class="img" src="../../images/user_images/u698.png" />
+	<!-- Unnamed () -->
+	<div id="u703" class="text" style="visibility: visible;">
+		<p id="cache94">
+			<span id="cache95">排&nbsp; 序</span>
+		</p>
+	</div>
+</div>
+<div id="u725" class="ax_default icon normal">
+	<img id="u725_img" class="img" src="../../images/user_images/u725.png"/>
+	<!-- Unnamed () -->
+	<div id="u726" class="text" style="display: none; visibility: hidden">
+		<p id="cache114">
+			<span id="cache115"></span>
+		</p>
+	</div>
+</div>
+<div id="u668" class="ax_default" >
+	<!-- 动态增加用户信息 -->
+</div>
+
+
+<!-- 标签分组 -->
+<div id="u713" class="ax_default box_1">
+	<div id="u713_div" class="">
+	</div>
+	<!-- Unnamed () -->
+	<div id="u714" class="text" style="visibility: visible;">
+		<p>
+			<span>标签分组</span>
+		</p>
+	</div>
+</div>
+<div id="u719" class="ax_default icon normal mouseOver" style="cursor: pointer;display:none">
+	<img id="u719_img" class="img mouseOver" src="../../images/user_images/u719.png" style="outline: none;"/>
+	<!-- Unnamed () -->
+	<div id="u720" class="text" style="display: none; visibility: hidden">
+		<p id="cache92">
+			<span id="cache93"></span>
+		</p>
+	</div>
+</div>
+<div id="u689" class="ax_default" >
+	<!-- 动态增加标签分组信息 -->
+</div>
+<div id="pagination_id"></div>
+<script type="text/javascript" src="../../js/global/lib/jquery-1.10.1.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/easyui/jquery.easyui.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/call.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/global.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/eimp-ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/user/user.js" charset="utf-8"></script>
+</body>
+</html>

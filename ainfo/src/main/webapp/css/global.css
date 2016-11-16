@@ -1,0 +1,496 @@
+body {
+	/*background: -webkit-linear-gradient(top,#F9F9F9 0,#ffffff 100%);
+	background: -moz-linear-gradient(top,#F9F9F9 0,#ffffff 100%);
+	background: -o-linear-gradient(top,#F9F9F9 0,#ffffff 100%);
+	background: linear-gradient(to bottom,#F9F9F9 0,#ffffff 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#F9F9F9,endColorstr=#ffffff,GradientType=0);	
+	
+	font-size: 12px;
+	font-family: "Microsoft YaHei";	
+	color: #707070;
+	padding: 0px;
+	margin: 0px;
+	SCROLLBAR-FACE-COLOR: #fcfcfc;
+	 SCROLLBAR-HIGHLIGHT-COLOR: #6c6c90;
+	 SCROLLBAR-SHADOW-COLOR: #fcfcfc;
+	 SCROLLBAR-3DLIGHT-COLOR: #fcfcfc;
+	 SCROLLBAR-ARROW-COLOR: #240024;
+	 SCROLLBAR-TRACK-COLOR: #fcfcfc;
+	 SCROLLBAR-DARKSHADOW-COLOR: #48486c;
+	 SCROLLBAR-BASE-COLOR: #fcfcfc;
+	 */
+}
+
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px
+}
+
+::-webkit-scrollbar-thumb {
+	background: #d3d6dc;
+	border-radius: 3px
+}
+
+
+.dialog_lable {
+    margin-left: 0px;
+    margin-top: 10px;
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    text-align: center;
+}
+.dialog_input {
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #D4D4D4;
+}
+
+.marker_hidden {
+    display: none;
+}
+.marker_visible {
+    display: block;
+}
+.reload_input {
+	margin-left: 10px;
+}
+.div_nowrap {
+	float:left;
+	width:160px;
+	word-break:keep-all;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.none {
+	display: none;
+}
+a {
+	text-decoration: none;
+	color: black;
+}
+a:hover {
+	color: #32A4E6;
+	text-decoration: underline;
+}
+/*Input样式*/
+.input_style {
+	width: 100%;
+	height: 25px;
+	line-height: 25px;
+	border: 1px solid #D4D4D4;
+	padding: 0px 0px;
+}  		
+.mizi {
+	color: #FF9900;
+	font-size: 22px;
+}
+/*弹出层确定取消按钮样式*/
+.popup_div {
+	margin: 15px 25px 0px 0px;  			
+	float: right;
+}
+.sava_btn_div {
+	background: url('../images/main_images/sava2.png') no-repeat;
+	height:33px;
+	width:88px;
+	color: #fff;
+	padding-top:5px;
+	padding-left: 5px;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+	font-size: 14px;
+}
+.cancel_btn_div {
+	background: url('../images/main_images/update3.png') no-repeat;
+	height:33px;
+	width:88px;
+	color: #fff;
+	padding-top:5px;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+	font-size: 14px;
+}
+/*搜索框样式*/
+.weuser_soso {
+	width: 284px;
+	height: 37px;
+	border: 1px solid #D4D4D4;
+	float: right;
+}
+.soso_input {
+	font-size: 14px;
+	color: #C0C0C0;
+	padding: 0px 0px 2px 5px;
+	margin-top: 0px;	
+	border: 0px;
+	font-family: "Microsoft YaHei";	
+}
+#submit_soso {
+	cursor: pointer;
+}
+
+.child_menu_selected {
+	width: 50%;
+	height: 40px;
+	background: url('../images/main_images/menu_bg.png');
+	float: left;
+	font-size: 14px;
+	color: #fff;
+	line-height: 38px;
+	text-align: center;
+}
+.child_menu_noselected {
+	width: 50%;
+	height: 39px;
+	background: url('../images/main_images/menu_noselect.png') 0 0;
+	border-bottom: 1px solid #D4D4D4;
+	float: left;
+	font-size: 14px;
+	color: #8b8b8b;
+	line-height: 37px;
+	text-align: center;
+	cursor: pointer;
+}
+.child_menu_noselected_over {
+	width: 50%;
+	height: 39px;
+	background: url('../images/main_images/menu_over.png') 0 0;
+	border-bottom: 1px solid #D4D4D4;
+	float: left;
+	font-size: 14px;
+	color: #8b8b8b;
+	line-height: 37px;
+	text-align: center;
+	cursor: pointer;
+}
+/*素材管理有关样式*/
+.material_childmenu_selected {
+	width: 33.3333%;
+	height: 40px;
+	background: url('../images/main_images/menu_bg.png');
+	float: left;
+	font-size: 14px;
+	color: #fff;
+	line-height: 38px;
+	text-align: center;
+}
+.material_childmenu_noselected {
+	width: 33.3333%;
+	height: 39px;
+	background: url('../images/main_images/menu_noselect.png') 0 0;
+	border-bottom: 1px solid #D4D4D4;
+	float: left;
+	font-size: 14px;
+	color: #8b8b8b;
+	line-height: 37px;
+	text-align: center;
+	cursor: pointer;
+	margin-left: -1px;
+}
+.material_childmenu_noselected_over {
+	width: 33.3333%;
+	height: 39px;
+	background: url('../images/main_images/menu_over.png') 0 0;
+	border-bottom: 1px solid #D4D4D4;
+	float: left;
+	font-size: 14px;
+	color: #8b8b8b;
+	line-height: 37px;
+	text-align: center;
+	cursor: pointer;
+	margin-left: -1px;
+}
+/*素材模块样式*/
+.grid_warp {
+	float: left;
+	width: 99%;
+	height: 92%;
+	margin: 5px 5px 0px 5px;	
+}
+.grid_warp_left {
+	width: 1050px;
+	float: left;
+}
+.grid_warp_right {
+	margin-top: 22px;
+	margin-right: 25px;
+	float: right;
+}
+.add_grid {
+	height: 90px;
+	width: 90px;
+	background: #D9D9D9;
+	cursor: pointer;	
+}
+.add_grid_ico {
+	background: url('../images/material_images/ico_add1.png') no-repeat 50% 50%;
+	width: 90px;
+	height: 90px;	
+}
+.add_grid_ok {
+	font-size: 14px;
+	color: #fff;
+	width: 90px;
+	text-align: center;
+	padding-top: 60px;
+}
+/*编辑内容弹出层的样式*/
+#updgrid_div table {
+	margin-top: 5px;
+	font-size: 12px;
+}
+.td1 {
+	padding-left: 14px;
+ }
+ .td3 {
+	font-size: 24px;
+	padding-top: 6px;
+	padding-left: 8px;
+	text-align: center;
+ }
+ #updgrid_div table input {
+	border: 1px solid #D4D4D4;
+	height:24px;
+	line-height: 24px;
+	width: 345px;
+ }
+ #updgrid_div table tr {
+	height: 35px;
+	line-height: 35px;
+ }
+.updgrid_div_select {
+	border: 1px solid #D4D4D4;
+	width: 60px;
+	padding: 2px 0px;
+	cursor: pointer;
+}
+.updgrid_div_select_content {
+	border: 1px solid #D4D4D4;
+	width: 347px;
+	padding: 2px 0px;
+	cursor: pointer;
+}
+
+.scimg_div {
+	width: 340px;
+	height: 110px;
+	border: 1px solid #D4D4D4;
+	text-align: center;
+}
+.imgfile_div {
+	margin-left: 90px;
+	margin-top: 35px;
+	font-size: 14px;
+	height: 50px;
+	width: 100px;
+	background:url('../images/material_images/sc_ico.png') no-repeat 0 8px;
+	cursor: pointer;
+}
+
+/*表格样式*/
+.usermgr_content {
+	height: 485px; 
+}
+.tab {
+	width: 100%;
+	font-size: 14px;
+	color: #464646;
+	padding: 0px;
+	margin: 0px;	
+	table-layout:fixed;
+}
+.tab thead tr {
+	text-align: center;
+	font-weight: 600;
+	color:#464646;
+}
+.tab tbody tr {
+	cursor: pointer;
+	text-align: center;
+	color:#464646;
+}
+.oddtd {
+	border-right: 1px solid #E2F2FB;
+	overflow: hidden;
+}
+.eventd {
+	border-right: 1px solid #ffffff;
+	overflow: hidden;
+}
+/*单行样式*/
+.oddtr {
+	height: 40px;
+	background: #ffffff;  
+}
+/*双行样式*/
+.eventr {	
+	height: 40px;
+	background: #E2F2FB;
+}
+/*表格行中如果想要该行的内容长度过长隐藏请使用该样式*/
+.div_ellipsis {
+	width: 100%;
+	height: 40px;
+	line-height:40px;
+	overflow:hidden;
+	word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+	text-overflow:ellipsis;
+}
+/*分页*/
+.page {	
+	font-size: 12px;
+	color: #707070;
+	/*position: fixed;*/
+	bottom: 15px;
+	left: 30px;
+}
+.page img {
+	cursor: pointer;
+}
+.page_left {
+	float: left;
+}
+
+.page_right {
+	float: right;
+}
+.page_left_1 {
+	border-left: 1px solid #BEBEBE;
+	height: 20px;
+	float: left;
+	padding-left: 12px;
+	margin-top: -3px;
+}
+.page_left_2 {
+	float: left;
+	padding-right: 29px;
+}
+.page_left_3 {
+	float: left;
+	padding-right: 12px;
+}
+.page_left_4 {
+	float: left;
+	padding-right: 4px;
+}
+.page_left_5 {
+	float: left;
+	padding-right: 4px;
+	margin-top: -3px;	
+}
+.page_left_5 input {
+	border: 1px solid #D4D4D4;
+	text-align: center;
+}
+.page_curr {
+	display:none;
+	float: left;
+}
+
+/*内二级菜单*/
+.menu-list{
+	position: absolute;
+    top: 0px;
+    left: 0px;
+    width: auto;
+    height: 30px;
+    margin: 30px 0px 0px 25px;
+}
+
+.menu-item{
+	float: left;
+    padding: 0px 10px 0px 10px;
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+    color: #333333;
+}
+.Fun{
+	display: none;
+	width: 100%;
+	height: 100%;
+}
+
+.show_img_box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.39);
+    z-index: 10000;
+    display: none;
+}
+
+/*创建浮动式面板*/
+.fun_panle {
+	display:none;
+	background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 122px;
+    left: 350px;
+    width: 400px;
+    height: 300px;
+    z-index: 100;
+    box-shadow: 2px 1px 20px -2px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.panel_button {
+    height: 33px;
+    background: inherit;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(204, 204, 204, 1);
+    box-shadow: none;
+    font-size: 16px;
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+}
+.panel_check_button {
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 10px;
+}
+.panel_check_button_text {
+	
+}
+.panel_flow_layout {
+	width: 100%;
+}
+.panel_flow_layout input {
+    width: 373px;
+    height: 30px;
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(153, 153, 153);
+    text-align: left;
+    outline-style: none;
+}
+.panel_control_button {
+	float: right;
+    border-radius: 5px;
+    margin-right: 7px;
+    margin-bottom: 8px;
+}
+.ok_color {
+    background-color: #32A4E6;
+    color: white;
+}
+.cancel_color {
+    background-color: #999999;
+    color: white;
+}

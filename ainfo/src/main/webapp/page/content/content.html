@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="shortcut icon" href="../../images/login_images/favicon.ico"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/bootstrap/easyui.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/global.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/system.css"/>
+</head>
+<body class="easyui-layout">
+<div class="total_panel">
+	<div id="status_show_div" class="status">
+		<div class="status_info_area">
+			<div class="run_img_first">
+				<div class="run_img_second">
+					<div id="run_info" class="run_info">系统运行中</div>
+				</div>
+			</div>
+			<div id="consecutive_days" class="run_info radius c777 run_status_01">系统已经连续运行：1500小时25分38秒</div>
+			<div id="start_time" class="run_info radius c777 run_status_02">系统上次启动时间：2016-01-01 07:56:46</div>
+			<div id="sys_status" class="run_info radius c777 run_status_03">系统当前运行状态：良好</div>
+		</div>
+		<div class="status_button_area">
+			<div id="status_button" class="status_button" onclick="sysOperate(this)">
+				关　闭
+			</div>
+		</div>
+	</div>
+	<div id="status_validate_div" class="status" style="display: none">
+		<div class="status_info_area" style="width: 20%;">
+			<img id="u2518_img" style="margin: 10% 25%; width: 40%;" src="../../images/system_images/u2518.png"/>
+		</div>
+		<div class="status_button_area" style="width: 79%; position: relative;">
+			<div class="validate_title">验证身份</div>
+			<div class="validate_content">
+				<input id="u2530_input" type="password" value=""/>
+				<div class="validate_button">
+					确　认
+				</div>
+			</div>
+			<div class="validate_prompt">本操作会影响整个用户系统的登录及操作，必须非常谨慎，请选择晚上用户在线少的时间段进行！</div>
+			<div class="close" onclick="closeTab('#status_validate_div')">
+				<span style="position: absolute; top: 1px; left: 5px;">×</span>
+			</div>
+		</div>
+	</div>
+	<div id="status_change_div" class="status" style="display: none">
+		<div class="status_info_area" style="width: 37%;">
+			<div class="status_title">停止原因</div>
+			<div id="change_reason_area">
+				<!-- 动态加载数据 -->
+			</div>
+		</div>
+		<div class="status_info_area" style="width: 37%;">
+			<div class="status_title">公告提示</div>
+			<textarea id="change_input"></textarea>
+		</div>
+		<div class="status_button_area" style="width: 24%;">
+			<div class="status_button" onclick="doStop()">
+				停　止
+			</div>
+		</div>
+	</div>
+</div>
+	
+<div class="page_body">
+	<!-- 开关配置 -->
+	<div class="title_content_area">
+		<div class="tc_title">
+			<font id="ossTest">开关配置</font>
+			<div class="put_open_button">
+				<div class="po_gt po_put" onclick="changePutOpenSwitch(this, '#sys_status_id')">&gt;</div>
+			</div>
+		</div>
+		<div id="sys_status_id" class="tc_content">
+			<!-- 动态显示行 -->
+		</div>
+	</div>
+	
+	<!-- 发现配置 -->
+	<div class="title_content_area">
+		<div class="tc_title">
+			<font>发现配置</font>
+			<div class="put_open_button">
+				<div class="po_gt po_put" onclick="changePutOpenSwitch(this, '#discover_id')">&gt;</div>
+			</div>
+			<div class="plus_button">
+				<div class="p_plus " onclick="newDiscover()">+</div>
+			</div>
+		</div>
+		<div id="discover_id" class="tc_content">
+			<!-- 动态显示行 -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="../../js/global/lib/jquery-1.10.1.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/easyui/jquery.easyui.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/plupload-2.1.2/js/plupload.full.min.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="../../js/global/lib/crypto1/crypto/crypto.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/crypto1/hmac/hmac.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/crypto1/sha1/sha1.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/nodejs-browserify.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/base64.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="../../js/global/lib/promise-6.1.0/promise-6.1.0.js"></script>
+<script type="text/javascript" src="../../js/global/lib/aliyun-oss-sdk-4.4.4.min.js"></script>
+
+<script type="text/javascript" src="../../js/global/call.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/global.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/eimp-ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/system/system.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/system/upload.js" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.heipiao.cp.ainfo.mapper.DictsMapper">
+	<resultMap id="BaseResultMap" type="cn.heipiao.cp.ainfo.pojo.Dicts">
+		<id     column="f_id"          jdbcType="INTEGER"   property="id" />
+		<result column="f_value"       jdbcType="VARCHAR"   property="value" />
+		<result column="f_name"        jdbcType="VARCHAR"   property="name" />
+		<result column="f_type"        jdbcType="VARCHAR"   property="type" />
+		<result column="f_order"       jdbcType="INTEGER"   property="order" />
+		<result column="f_create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="f_update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		f_id, f_value, f_name, f_type, f_order, 
+		f_create_time, f_update_time
+	</sql>
+
+	<select id="selectDictByType" parameterType="cn.heipiao.cp.ainfo.pojo.Dicts" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_dicts
+		where f_type=#{type}
+		order by f_order
+	</select>
+</mapper>

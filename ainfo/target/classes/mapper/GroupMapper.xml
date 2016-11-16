@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.heipiao.cp.sys.mapper.GroupMapper">
+	<resultMap id="BaseResultMap" type="cn.heipiao.cp.sys.pojo.Group">
+		<id column="f_id" property="id" />
+		<result column="f_name" property="name" />
+		<result column="f_create_time" property="createTime" />
+		<result column="f_create_user" property="createUser" />
+		<result column="f_update_time" property="updateTime" />
+		<result column="f_update_user" property="updateUser" />
+		<result column="f_status" property="status" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		f_id, f_name, f_create_time, f_create_user, f_update_time, f_update_user,
+		f_status
+	</sql>
+
+	<select id="selectById" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_cp_group
+		where f_id = #{id}
+	</select>
+
+	<delete id="deleteById">
+		delete from t_cp_group 
+		where f_id = #{id}
+	</delete>
+	
+	<delete id="deleteByUser">
+		delete from t_cp_group_user_relevance
+		where f_userid = #{id}
+	</delete>
+
+	<insert id="insert" parameterType="cn.heipiao.cp.sys.pojo.Group">
+		insert into t_cp_group (f_id, f_name, f_create_time,
+		f_create_user, f_update_time, f_update_user,
+		f_status)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{createUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR},
+		#{status,jdbcType=CHAR})
+	</insert>
+	
+	<insert id="inserts" parameterType="java.util.Map"><!-- #{userId} groupIds -->
+		insert into t_cp_group_user_relevance values
+		<foreach collection="groupIds" item="groupId" index="index" separator=",">  
+    		(#{userId},#{groupId})
+		</foreach>
+	</insert>
+
+	<update id="updateById" parameterType="cn.heipiao.cp.sys.pojo.Group">
+		update t_cp_group
+		<set>
+			<if test="name != null">
+				f_name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				f_create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="createUser != null">
+				f_create_user = #{createUser,jdbcType=VARCHAR},
+			</if>
+			<if test="updateTime != null">
+				f_update_time = #{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateUser != null">
+				f_update_user = #{updateUser,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				f_status = #{status,jdbcType=CHAR},
+			</if>
+		</set>
+		where f_id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="selectByUserId" resultType="cn.heipiao.cp.sys.pojo.Entry">
+		select `f_id` `value`, `f_name` `key` from t_cp_group where f_id in (
+		select f_groupid from t_cp_group_user_relevance where f_userid = #{userId} and f_status = 1 
+		)
+	</select>
+	
+	<select id="selectAllGroup" resultType="cn.heipiao.cp.sys.pojo.Entry">
+		select f_id `value` , f_name `key` from t_cp_group where f_status = 1
+	</select>
+	
+	<!-- <insert id="insertSelective" parameterType="cn.heipiao.cp.sys.pojo.Group" 
+		> insert into t_cp_group <trim prefix="(" suffix=")" suffixOverrides="," 
+		> <if test="id != null" > f_id, </if> <if test="name != null" > f_name, </if> 
+		<if test="createTime != null" > f_create_time, </if> <if test="createUser 
+		!= null" > f_create_user, </if> <if test="updateTime != null" > f_update_time, 
+		</if> <if test="updateUser != null" > f_update_user, </if> <if test="status 
+		!= null" > f_status, </if> </trim> <trim prefix="values (" suffix=")" suffixOverrides="," 
+		> <if test="id != null" > #{id,jdbcType=INTEGER}, </if> <if test="name != 
+		null" > #{name,jdbcType=VARCHAR}, </if> <if test="createTime != null" > #{createTime,jdbcType=TIMESTAMP}, 
+		</if> <if test="createUser != null" > #{createUser,jdbcType=VARCHAR}, </if> 
+		<if test="updateTime != null" > #{updateTime,jdbcType=TIMESTAMP}, </if> <if 
+		test="updateUser != null" > #{updateUser,jdbcType=VARCHAR}, </if> <if test="status 
+		!= null" > #{status,jdbcType=CHAR}, </if> </trim> </insert> <update id="updateByPrimaryKey" 
+		parameterType="cn.heipiao.cp.sys.pojo.Group" > update t_cp_group set f_name 
+		= #{name,jdbcType=VARCHAR}, f_create_time = #{createTime,jdbcType=TIMESTAMP}, 
+		f_create_user = #{createUser,jdbcType=VARCHAR}, f_update_time = #{updateTime,jdbcType=TIMESTAMP}, 
+		f_update_user = #{updateUser,jdbcType=VARCHAR}, f_status = #{status,jdbcType=CHAR} 
+		where f_id = #{id,jdbcType=INTEGER} </update> -->
+
+</mapper>

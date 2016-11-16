@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="shortcut icon" href="../../images/login_images/favicon.ico"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/bootstrap/easyui.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/icon.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/global.css"/>
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/siteNew.css"/>
+</head>
+<body class="easyui-layout">
+
+<!-- 钓场信息 -->
+<div id="u1321" class="ax_default box_1">
+	<div id="u1321_div" class="">
+	</div>
+	<div id="u1322" class="text" style="visibility: visible;">
+		<p>
+			<span>钓场信息</span>
+		</p>
+	</div>
+</div>
+<div id="u1371" class="ax_default icon normal" style="cursor: pointer;" onclick="saveSite()">
+	<img id="u1371_img" class="img" src="../../images/frame_images/u587.png" style="outline: none;"/>
+	<div id="u1372" class="text" style="display: none; visibility: hidden">
+		<p id="cache30">
+			<span id="cache31"></span>
+		</p>
+	</div>
+</div>
+<div id="u1319" class="ax_default box_1">
+	<div id="u1325" class="ax_default">
+		<div id="u1325_state0" class="panel_state"  style="width: 401px; height: 42px;">
+			<div id="u1325_state0_content" class="panel_state_content">
+				<div id="u1326" class="ax_default box_1">
+					<div id="u1326_div" class="">
+					</div>
+					<div id="u1327" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 姓名 (文本框) -->
+				<div id="u1328" class="ax_default text_field">
+					<input id="u1328_input" type="text" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u1329" class="ax_default line">
+					<img id="u1329_img" class="img " src="../../images/team_images/u532.png"/>
+					
+					<div id="u1330" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1333" class="ax_default icon">
+					<img id="u1333_img" class="img " src="../../images/site_images/u1333.png"/>
+					
+					<div id="u1334" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1601" class="ax_default label">
+		<div id="u1601_div" class="">
+		</div>
+		
+		<div id="u1602" class="text" style="visibility: visible;">
+			<p>
+				<span>*</span>
+			</p>
+		</div>
+	</div>
+	<div id="u1450" class="ax_default"   style="cursor: pointer;">
+		<div id="u1450_state0" class="panel_state"  style="width: 298px; height: 42px;">
+			<div id="u1450_state0_content" class="panel_state_content">
+				
+				<div id="u1451" class="ax_default box_1">
+					<div id="u1451_div" class="">
+					</div>
+					
+					<div id="u1452" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 手机 (文本框) -->
+				<div id="u1453" class="ax_default text_field" >
+					<input id="u1453_input" type="text" onclick="editPCA();" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u1454" class="ax_default line">
+					<img id="u1454_img" class="img " src="../../images/team_images/u532.png"/>
+					
+					<div id="u1455" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1458" class="ax_default icon">
+					<img id="u1458_img" class="img " src="../../images/partner_images/city_u965_selected.png"/>
+					
+					<div id="u1459" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1603" class="ax_default label">
+		<div id="u1603_div" class="">
+		</div>
+		
+		<div id="u1604" class="text" style="visibility: visible;">
+			<p>
+				<span>*</span>
+			</p>
+		</div>
+	</div>
+	
+	<div id="u1799" class="ax_default box_1" style="cursor: pointer;" onclick="editLngLat()" title="请点击设置经纬度">
+		<img id="u1799_img" class="img " src="../../images/site_images/u1599.png" />
+		
+		<div id="u1798" class="text" style="visibility: visible;">
+			<p>
+				<span>经纬度</span>
+			</p>
+		</div>
+	</div>
+	<div id="u1599" class="ax_default box_1" style="cursor: pointer;" onclick="editKCode()" title="请点击设置高德K码">
+		<img id="u1599_img" class="img " src="../../images/site_images/u1599.png" />
+		
+		<div id="u1600" class="text" style="visibility: visible;">
+			<p>
+				<span>K码</span>
+			</p>
+		</div>
+	</div>
+	<div id="u1335" class="ax_default">
+		<div id="u1335_state0" class="panel_state"  style="width: 401px; height: 42px;">
+			<div id="u1335_state0_content" class="panel_state_content">
+				
+				<div id="u1336" class="ax_default box_1">
+					<div id="u1336_div" class="">
+					</div>
+					
+					<div id="u1337" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 手机 (文本框) -->
+				<div id="u1338" class="ax_default text_field">
+					<input id="u1338_input" type="text" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u1339" class="ax_default line">
+					<img id="u1339_img" class="img " src="../../images/team_images/u532.png"/>
+					
+					<div id="u1340" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1343" class="ax_default icon">
+					<img id="u1343_img" class="img " src="../../images/site_images/u1343.png"/>
+					
+					<div id="u1344" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1605" class="ax_default label">
+		<div id="u1605_div" class="">
+		</div>
+		
+		<div id="u1606" class="text" style="visibility: visible;">
+			<p>
+				<span>*</span>
+			</p>
+		</div>
+	</div>
+	<div id="u1492" class="ax_default" style="cursor: pointer;">
+		<div id="u1492_state0" class="panel_state"  style="width: 401px; height: 42px;">
+			<div id="u1492_state0_content" class="panel_state_content">
+				
+				<div id="u1493" class="ax_default box_1">
+					<div id="u1493_div" class="">
+					</div>
+					
+					<div id="u1494" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 群组 (文本框) -->
+				<div id="u1495" class="ax_default text_field" >
+					<input id="u1495_input" type="text" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				<div id="u1774" class="ax_default" onclick="editfeeType()"></div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u1504" class="ax_default line">
+					<img id="u1504_img" class="img " src="../../images/team_images/u532.png"/>
+					
+					<div id="u1505" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1506" class="ax_default icon">
+					<img id="u1506_img" class="img " src="../../images/site_images/u1506.png"/>
+					
+					<div id="u1507" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1607" class="ax_default label">
+		<div id="u1607_div" class="">
+		</div>
+		
+		<div id="u1608" class="text" style="visibility: visible;">
+			<p>
+				<span>*</span>
+			</p>
+		</div>
+	</div>
+	<div id="u1470" class="ax_default" style="cursor: pointer;">
+		<div id="u1470_state0" class="panel_state"  style="width: 401px; height: 42px;">
+			<div id="u1470_state0_content" class="panel_state_content">
+				
+				<div id="u1471" class="ax_default box_1">
+					<div id="u1471_div" class="">
+					</div>
+					
+					<div id="u1472" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 群组 (文本框) -->
+				<div id="u1473" class="ax_default text_field" >
+					<input id="u1473_input" type="text" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				<!-- 会员标签组 (中继器) -->
+				<div id="u1474" class="ax_default" onclick="editfeeType()"></div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u1477" class="ax_default line">
+					<img id="u1477_img" class="img " src="../../images/team_images/u532.png"/>
+					
+					<div id="u1478" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1479" class="ax_default icon">
+					<img id="u1479_img" class="img " src="../../images/site_images/u1479.png"/>
+					
+					<div id="u1480" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1609" class="ax_default label">
+		<div id="u1609_div" class="">
+		</div>
+		
+		<div id="u1610" class="text" style="visibility: visible;">
+			<p>
+				<span>*</span>
+			</p>
+		</div>
+	</div>
+	<div id="u1361" class="ax_default" style="cursor: pointer;">
+		<div id="u1361_state0" class="panel_state"  style="width: 401px; height: 97px;">
+			<div id="u1361_state0_content" class="panel_state_content">
+				
+				<div id="u1362" class="ax_default box_1">
+					<div id="u1362_div" class="">
+					</div>
+					
+					<div id="u1363" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				
+				<div id="u1364" class="ax_default box_1">
+					<div id="u1364_div" class="">
+					</div>
+					
+					<div id="u1365" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 简介 (多行文本框) -->
+				<div id="u1366" class="ax_default text_area" >
+					<textarea id="u1366_input" style="color: rgb(153, 153, 153);"></textarea>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1367" class="ax_default icon">
+					<img id="u1367_img" class="img " src="../../images/team_images/u581.png"/>
+					
+					<div id="u1368" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1572" class="ax_default" >
+		<div id="u1572_state0" class="panel_state"  style="width: 401px; height: 42px;">
+			<div id="u1572_state0_content" class="panel_state_content">
+				
+				<div id="u1573" class="ax_default box_1">
+					<div id="u1573_div" class="">
+					</div>
+					
+					<div id="u1574" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 姓名 (文本框) -->
+				<div id="u1575" class="ax_default text_field" >
+					<input id="u1575_input" type="text" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u1576" class="ax_default line">
+					<img id="u1576_img" class="img " src="../../images/team_images/u532.png"/>
+					
+					<div id="u1577" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1580" class="ax_default icon">
+					<img id="u1580_img" class="img " src="../../images/team_images/u536.png"/>
+					
+					<div id="u1581" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1460" class="ax_default" >
+		<div id="u1460_state0" class="panel_state"  style="width: 401px; height: 42px;">
+			<div id="u1460_state0_content" class="panel_state_content">
+				
+				<div id="u1461" class="ax_default box_1">
+					<div id="u1461_div" class="">
+					</div>
+					
+					<div id="u1462" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 手机 (文本框) -->
+				<div id="u1463" class="ax_default text_field" >
+					<input id="u1463_input" type="text" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u1464" class="ax_default line">
+					<img id="u1464_img" class="img " src="../../images/team_images/u532.png"/>
+					
+					<div id="u1465" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u1468" class="ax_default icon">
+					<img id="u1468_img" class="img " src="../../images/team_images/u550.png"/>
+					
+					<div id="u1469" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u1443" class="u1443 ax_default">
+		<div id="u1443_back" class="u1443 ax_default" style="top:0px; left:0px;"></div>
+		<div id="upload_div" class="upload_button_space hiddenc" style="top: 123px;">
+			<div class="upload_button"style="font-size: 15px; top: 7px;">设置主图</div>
+		</div>
+		<div id="plusImgDiv" class="upload_button_space hiddenc" title="保存钓场时会统一上传图片">
+			<div class="upload_button">+</div>
+		</div>
+		<div id="u1443_images"></div>
+	</div>
+	<div id="u1681" class="ax_default" style="cursor: pointer; outline: none;">
+		<div id="u1681_state0" class="panel_state"  style="width: 401px; height: 91px;">
+			<div id="u1681_state0_content" class="panel_state_content">
+				<div id="u1682" class="ax_default box_1">
+					<div id="u1682_div" class="">
+					</div>
+					
+					<div id="u1683" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<div id="u1684" class="ax_default text_field" >
+					<input id="u1684_input" type="text" value="" style="color: rgb(153, 153, 153);"/>
+				</div>
+				
+				<div id="u1474" class="ax_default" onclick="editFacility()"></div>
+				<div id="u1690" class="ax_default icon">
+					<img id="u1690_img" class="img " src="../../images/site_images/u1690.png"/>
+					
+					<div id="u1691" class="text" style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<!-- 右箭头 -->
+<div id="u1323" class="ax_default icon" onclick="test()">
+	<img id="u1323_img" class="img " src="../../images/team_images/u524.png"/>
+	
+	<div id="u1324" class="text" style="display: none; visibility: hidden">
+		<p>
+			<span></span>
+		</p>
+	</div>
+</div>
+
+<!-- 鱼塘信息 -->
+<div id="u1439" class="ax_default box_1">
+	<div id="u1439_div" class="">
+	</div>
+	
+	<div id="u1440" class="text" style="visibility: visible;">
+		<p>
+			<span>鱼塘信息</span>
+		</p>
+	</div>
+</div>
+<div id="u1375" class="ax_default" >
+	<!-- 动态加载数据 -->
+</div>
+<div id="u1441" class="ax_default icon normal" style="cursor: pointer;" onclick="addPound()">
+	<img id="u1441_img" class="img" src="../../images/site_images/u1441.png"  style="outline: none;"/>
+	
+	<div id="u1442" class="text" style="display: none; visibility: hidden">
+		<p id="cache32">
+			<span id="cache33"></span>
+		</p>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="../../js/global/lib/jquery-1.10.1.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/easyui/jquery.easyui.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/plupload-2.1.2/js/plupload.full.min.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="../../js/global/lib/crypto1/crypto/crypto.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/crypto1/hmac/hmac.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/crypto1/sha1/sha1.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/nodejs-browserify.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/base64.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="../../js/global/lib/promise-6.1.0/promise-6.1.0.js"></script>
+<script type="text/javascript" src="../../js/global/lib/aliyun-oss-sdk-4.4.4.min.js"></script>
+
+<script type="text/javascript" src="../../js/global/call.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/global.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/eimp-ajax.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/site/siteNew.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/site/upload.js" charset="utf-8"></script>
+</body>
+</html>

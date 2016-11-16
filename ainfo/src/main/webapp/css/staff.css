@@ -1,0 +1,56 @@
+body {
+  margin:0px;
+  background-image:none;
+  position:static;
+  left:auto;
+  margin-left:0;
+  margin-right:0;
+  text-align:left;
+}
+p {
+	-webkit-margin-before: 0em;
+}
+
+#pagination_id {
+    position: inherit;
+    height: 20px;
+    bottom: 10px;
+    left: 28px;
+    top: 791px;
+}
+
+.dataContent {
+	width: 95%;
+    margin: 80px 0px 0px 2.5%;
+}
+
+.line_operate_button {
+    float: left;
+    width: 100px;
+    height: 32px;
+    background: inherit;
+    background-color: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(204, 204, 204, 1);
+    border-radius: 5px;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    font-size: 13px;
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    color: #00438a;
+    padding-top: 5px;
+    margin: 0px 0px 0px 0px;
+    cursor: pointer;
+}
+
+.dInput {
+	width: 245px;
+	height: 25px;
+	border: rgba(212, 212, 212, 0.68) solid 1px;
+}

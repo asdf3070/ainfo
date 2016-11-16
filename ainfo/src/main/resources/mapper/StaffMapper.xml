@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.heipiao.cp.ainfo.mapper.StaffMapper">
+	<resultMap id="BaseResultMap" type="cn.heipiao.cp.ainfo.pojo.Staff">
+		<id     column="f_id"          jdbcType="INTEGER"   property="id" />
+		<result column="f_number"      jdbcType="VARCHAR"   property="number" />
+		<result column="f_name"        jdbcType="VARCHAR"   property="name" />
+		<result column="f_password"    jdbcType="VARCHAR"   property="password" />
+		<result column="f_status"      jdbcType="INTEGER"   property="status" />
+		<result column="f_create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="f_update_time" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		f_id, f_number, f_name, f_password, f_status, 
+		f_create_time, f_update_time
+	</sql>
+
+	<select id="selectTerminalList" parameterType="cn.heipiao.cp.ainfo.pojo.Staff" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_staff
+		where f_status=#{status}
+		order by f_create_time
+	</select>
+	
+	<select id="queryList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		<include refid="sql_queryList" /> 
+		order by f_create_time desc
+		LIMIT #{startItem},#{pagesize}
+	</select>
+	
+	<sql id="sql_queryList">
+		from t_staff
+		where f_status=#{status}
+	</sql>
+	
+	<select id="queryListCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		SELECT COUNT(0)
+		<include refid="sql_queryList" /> 
+	</select>
+	
+	<insert id="insertTerminal" useGeneratedKeys="true" keyProperty="id" parameterType="cn.heipiao.cp.ainfo.pojo.Staff">
+		insert into t_staff
+		(f_number, f_name, f_password, f_status, f_create_time)
+		values
+		(#{number}, #{name}, #{password}, #{status}, CURRENT_TIMESTAMP)
+	</insert>
+	
+	<update id="updateTerminalById" parameterType="cn.heipiao.cp.ainfo.pojo.Staff">
+ 		update t_staff
+ 		<set>
+ 			<if test="number != null">
+ 				f_number = #{number},
+ 			</if>
+ 			<if test="name != null">
+ 				f_name = #{name},
+ 			</if>
+ 			<if test="password != null">
+ 				f_password = #{password},
+ 			</if>
+ 			<if test="status != null">
+ 				f_status = #{status},
+ 			</if>
+ 		</set>
+ 		where f_id = #{id}
+	</update>
+
+</mapper>

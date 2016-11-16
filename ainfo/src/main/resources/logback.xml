@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+	
+	<property file="${hp.config}/init.properties" />
+	
+	 <!-- 全部日志 appender  -->
+    <appender name="ALL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home.value}/all.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 每天一归档 -->
+			<fileNamePattern>${log.home.value}/%d{yyyy-MM-dd}.all.%i.zip</fileNamePattern>
+			 <!-- 单个日志文件最多 maxFileSize, maxHistory天的日志周期，最大不能超过totalSizeCap -->
+			<maxFileSize>${log.maxFileSize}</maxFileSize>
+			<maxHistory>${log.maxHistory}</maxHistory>
+			<totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+		</encoder>
+    </appender>
+	
+	 <!-- 信息日志 appender  -->
+    <appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home.value}/info.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 每天一归档 -->
+			<fileNamePattern>${log.home.value}/%d{yyyy-MM-dd}.info.%i.zip</fileNamePattern>
+			 <!-- 单个日志文件最多 maxFileSize, maxHistory天的日志周期，最大不能超过totalSizeCap -->
+			<maxFileSize>${log.maxFileSize}</maxFileSize>
+			<maxHistory>${log.maxHistory}</maxHistory>
+			<totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+		</encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印信息日志 -->
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+	
+	 <!-- 调试日志 appender  -->
+    <appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home.value}/debug.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 每天一归档 -->
+			<fileNamePattern>${log.home.value}/%d{yyyy-MM-dd}.debug.%i.zip</fileNamePattern>
+			 <!-- 单个日志文件最多 maxFileSize, maxHistory天的日志周期，最大不能超过totalSizeCap -->
+			<maxFileSize>${log.maxFileSize}</maxFileSize>
+			<maxHistory>${log.maxHistory}</maxHistory>
+			<totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+		</encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印调试日志 -->
+            <level>debug</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+	
+	 <!-- 出错日志 appender  -->
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home.value}/error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<!-- 每天一归档 -->
+			<fileNamePattern>${log.home.value}/%d{yyyy-MM-dd}.error.%i.zip</fileNamePattern>
+			 <!-- 单个日志文件最多 maxFileSize, maxHistory天的日志周期，最大不能超过totalSizeCap -->
+			<maxFileSize>${log.maxFileSize}</maxFileSize>
+			<maxHistory>${log.maxHistory}</maxHistory>
+			<totalSizeCap>${log.totalSizeCap}</totalSizeCap>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread] %logger{36} - %msg%n</pattern>
+		</encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+	<root level="${log.level}">
+		<appender-ref ref="ALL" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="ERROR" />
+	</root>
+</configuration> 

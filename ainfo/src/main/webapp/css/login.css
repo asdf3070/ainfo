@@ -1,0 +1,123 @@
+*{
+	margin:0px; 
+	padding:0px
+}
+body {
+	background: #333333;
+}
+
+.login_warp{
+	height: 70px;
+	background: -webkit-linear-gradient(#333333 0,#545454 100%);
+	background: -o-linear-gradient(#333333 0,#545454 100%);
+	background: linear-gradient(#333333 0,#545454 100%);
+	background-repeat: repeat-x;
+  	/* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#F2F2F2,GradientType=0); */
+}
+.login_warp{
+	background: #333333;
+}
+.login_header_logindiv_username {
+	background:white;
+	height: 49px;
+	width: 398px;
+	border : 1px solid #D0D0D0;
+	float: left;	
+	border-radius:2px;
+}
+.icodiv {
+	margin-top: 16px; 
+	margin-left: 12px;
+}
+.inputdiv {
+	margin-left: 50px;
+	margin-top: -24px;
+}
+.login_header_logindiv_password {
+	background:white;
+	height: 49px;
+	width: 398px;
+	border : 1px solid #D0D0D0;
+	border-top:0px;
+	float: left;
+	border-radius:2px;
+}
+.login_header_logindiv_loginbtn {
+	/*float: left;*/
+	cursor: pointer;
+	margin-top:10px;
+}
+.login_header_logindiv_loginbtn div{
+	width:398px;
+	height:48px;
+	border:1px solid #cccccc;
+	text-align:center;
+	line-height:48px;
+	font-size:18px;
+	color:white;
+	background: #1785FE;
+	border-radius:4px;
+} 
+.footer {
+	text-align: center;
+	height: 45px;
+	width: 100%;
+	line-height: 45px;
+	font-size: 10px;
+	color: #969696;
+	bottom: 0;
+	position: fixed;
+	z-index: 9;
+	border-top: 1px solid #333333;
+	background: #333333;
+}
+
+
+
+.content_out {
+    margin-top: 10%;
+}
+
+.content_in {
+    margin-right: auto;
+    margin-left: auto;
+	background: linear-gradient(
+			180deg, 
+			rgba(242, 242, 242, 1) 0%, 
+			rgba(242, 242, 242, 1) 0%, 
+			rgba(228, 228, 228, 1) 100%, 
+			rgba(228, 228, 228, 1) 100%
+			);
+    width: 400px;
+    border: none;
+    border-radius: 10px;
+    padding: 5 20 30 20;
+    color: #333333;
+}
+.content_title {
+	text-align: center;
+}
+.content_title_span{
+	font-family: '微软雅黑 Bold', '微软雅黑';
+	font-weight: 700;
+	font-style: normal;
+	font-size: 40px;
+}
+
+.formIpt {
+    width: 330px;
+    padding: 0px 0px 0px;
+    ime-mode: disabled;
+    height: 30px;
+    top: 1px;
+    left: 28px;
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    font-family: verdana;
+    line-height: 21px;
+    background: transparent!important;
+}
+
+.formIpt:focus{outline:0;}

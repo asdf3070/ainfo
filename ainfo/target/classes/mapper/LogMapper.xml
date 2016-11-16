@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.heipiao.cp.sys.mapper.LogMapper" >
+  <resultMap id="BaseResultMap" type="cn.heipiao.cp.sys.pojo.Log" >
+    <id column="f_id" property="id"  />
+    <result column="f_user_id" property="userId"  />
+    <result column="f_nickname" property="nickname"  />
+    <result column="f_time" property="time" />
+    <result column="f_content" property="content"  />
+    <result column="f_interface" property="interfaceName"  />
+    <result column="f_ip" property="ip"  />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    f_id, f_user_id, f_nickname, f_time, f_content, f_interface, f_ip
+  </sql>
+  
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_cp_operate_log
+    where f_id = #{id}
+  </select>
+  
+  <delete id="deleteId" parameterType="java.lang.Integer" >
+    delete from t_cp_operate_log
+    where f_id = #{id}
+  </delete>
+  
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="cn.heipiao.cp.sys.pojo.Log" >
+    insert into t_cp_operate_log (f_user_id, f_nickname, f_time, f_content, f_interface, f_ip)
+    values (#{userId}, #{nickname}, #{time}, #{content}, #{interfaceName}, #{ip})
+  </insert>
+  
+  <update id="updateById" parameterType="cn.heipiao.cp.sys.pojo.Log" >
+    update t_cp_operate_log
+    <set >
+      <if test="userId != null" >
+        f_user_id = #{userId},
+      </if>
+      <if test="nickname != null" >
+        f_nickname = #{nickname},
+      </if>
+      <if test="time != null" >
+        f_time = #{time},
+      </if>
+      <if test="content != null" >
+        f_content = #{content},
+      </if>
+      <if test="interfaceName != null" >
+        f_interface = #{interfaceName},
+      </if>
+      <if test="ip != null" >
+        f_ip = #{ip},
+      </if>
+    </set>
+    where f_id = #{id}
+  </update>
+  
+  <!-- 
+  
+  <update id="updateId" parameterType="cn.heipiao.cp.sys.pojo.Log" >
+    update t_cp_operate_log
+    set f_user_id = #{userId},
+      f_nickname = #{nickname},
+      f_time = #{time},
+      f_content = #{content},
+      f_interface = #{interfaceName},
+      f_ip = #{ip}
+    where f_id = #{id}
+  </update>
+  
+  <insert id="insertSelective" parameterType="cn.heipiao.cp.sys.pojo.Log" >
+    insert into t_cp_operate_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        f_id,
+      </if>
+      <if test="userId != null" >
+        f_user_id,
+      </if>
+      <if test="nickname != null" >
+        f_nickname,
+      </if>
+      <if test="time != null" >
+        f_time,
+      </if>
+      <if test="content != null" >
+        f_content,
+      </if>
+      <if test="interfaceName != null" >
+        f_interface,
+      </if>
+      <if test="ip != null" >
+        f_ip,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id},
+      </if>
+      <if test="userId != null" >
+        #{userId},
+      </if>
+      <if test="nickname != null" >
+        #{nickname},
+      </if>
+      <if test="time != null" >
+        #{time},
+      </if>
+      <if test="content != null" >
+        #{content},
+      </if>
+      <if test="interfaceName != null" >
+        #{interfaceName},
+      </if>
+      <if test="ip != null" >
+        #{ip},
+      </if>
+    </trim>
+  </insert>
+  
+  -->
+  
+</mapper>

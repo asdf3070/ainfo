@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.heipiao.cp.shiro.mapper.UserMapper">
+	<resultMap id="BaseResultMap" type="cn.heipiao.cp.shiro.pojo.User">
+		<id column="f_id" property="id" jdbcType="INTEGER" />
+		<result column="f_username" property="username" jdbcType="VARCHAR" />
+		<result column="f_realname" property="realname" jdbcType="VARCHAR" />
+		<result column="f_password" property="password" jdbcType="VARCHAR" />
+		<result column="f_phonenum" property="phonenum" jdbcType="VARCHAR" />
+		<result column="f_email" property="email" jdbcType="VARCHAR" />
+		<result column="f_sex" property="sex" jdbcType="CHAR" />
+		<result column="f_register_time" property="registerTime"
+			jdbcType="TIMESTAMP" />
+		<result column="f_portriat" property="portriat" jdbcType="VARCHAR" />
+		<result column="f_remarks" property="remarks" jdbcType="VARCHAR" />
+		<result column="f_last_logintime" property="lastLogintime"
+			jdbcType="TIMESTAMP" />
+		<result column="f_status" property="status" jdbcType="CHAR" />
+	</resultMap>
+	
+	<select id="queryAutoInfo" resultType="cn.heipiao.cp.sys.pojo.AutoInfoParam">
+		select id, p_name pName , p_value pValue from t_param
+	</select>	
+	
+	<update id="writeAutoInfo" parameterType="cn.heipiao.cp.sys.pojo.AutoInfoParam">
+		update t_param set p_value = #{pValue} where id = #{id}
+	</update>
+	
+	<select id="getUsersByPhoneOrName" resultType="cn.heipiao.cp.shiro.pojo.User">
+
+		SELECT
+		 f_id id, f_username username, f_portriat portriat, f_remarks
+		remarks 
+		FROM
+		t_cp_user u
+		where
+		u.f_username LIKE CONCAT('%', #{param})
+
+		UNION
+
+		SELECT
+		 f_id id, f_username username, f_portriat portriat, f_remarks
+		remarks 
+		FROM
+		t_cp_user u
+		where
+		u.f_username LIKE CONCAT(#{param} , '%')
+
+		UNION
+
+		SELECT
+		 f_id id, f_username username, f_portriat portriat, f_remarks
+		remarks 
+		FROM
+		t_cp_user u
+		where
+		u.f_phonenum LIKE CONCAT('%', #{param})
+
+		UNION
+
+		SELECT
+		 f_id id, f_username username, f_portriat portriat, f_remarks
+		remarks 
+		FROM
+		t_cp_user u
+		where
+		u.f_phonenum LIKE CONCAT(#{param} , '%')
+
+	</select>
+	
+	<sql id="Base_Column_List">
+		f_id, f_username, f_realname, f_password, f_phonenum, f_email, f_sex,
+		f_register_time,
+		f_portriat, f_remarks, f_last_logintime, f_status
+	</sql>
+
+	<select id="selectListSimple" resultType="cn.heipiao.cp.shiro.pojo.User">
+		select f_id id, f_username username, f_portriat portriat, f_remarks remarks, 
+		       f_realname realname, f_phonenum phonenum
+		from t_cp_user 
+		where 1=1
+			<if test="status != null">
+				and f_status = #{status}
+			</if>
+		order BY f_register_time
+		<if test="start != null and size != null">
+			limit ${start} , #{size}
+		</if>
+	</select>
+
+	<select id="getPermissions" resultType="java.lang.String" >
+		SELECT
+		f_model_code
+		FROM
+		t_cp_model_user_relevance
+		WHERE
+		f_uid = #{id};
+	</select>
+	
+	<select id="getPermissionInfos" resultType="cn.heipiao.cp.shiro.pojo.Role" >
+		SELECT
+		f_uid userId,
+		f_model_id modelId,
+		f_model_code modelCode
+		FROM
+		t_cp_model_user_relevance
+		WHERE
+		f_uid = #{id};
+	</select>
+
+	<select id="getLoginUser" resultType="cn.heipiao.cp.shiro.pojo.SessionUser">
+		SELECT f_id id, f_realname username, f_password PASSWORD, f_status STATUS, f_portriat portriat, f_remarks remarks
+		FROM t_cp_user
+		WHERE f_phonenum = #{param} OR f_email = #{param} OR f_username = #{param} OR f_realname = #{param}
+		LIMIT 0, 1
+	</select>
+
+	<select id="selectById" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_cp_user
+		where f_id = #{id}
+	</select>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from t_cp_user
+		where f_id = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<insert id="insert">
+		insert into t_cp_user (f_id, f_username, f_realname,
+		f_password, f_phonenum, f_email,
+		f_sex, f_register_time, f_portriat,
+		f_remarks, f_last_logintime, f_status
+		)
+		values (#{id}, #{username},
+		#{realname},
+		#{password}, #{phone}, #{email},
+		#{sex}, #{regisTime},
+		#{portriat},
+		#{remark}, #{lastLoginTime}, #{status}
+		)
+	</insert>
+	
+	<insert id="insertss" parameterType="cn.heipiao.cp.sys.pojo.ApiUser" >
+		insert into t_cp_user (f_id, f_username, f_realname,
+		f_password, f_phonenum, f_email,
+		f_sex, f_register_time, f_portriat,
+		f_remarks, f_last_logintime, f_status
+		)
+		values 
+		<foreach collection="list" item="item" index="index" separator="," >
+        (
+		${item.id}, 
+		${item.username},
+		${item.realname},
+		${item.password},
+		${item.phone},
+		${item.email},
+		${item.sex}, 
+		${item.regisTime},
+		${item.portriat},
+		${item.remark}, 
+		${item.lastLoginTime}, 
+		${item.status}
+		)
+   		</foreach> 
+		
+	</insert>
+
+	<update id="updateById" parameterType="cn.heipiao.cp.shiro.pojo.User">
+		update t_cp_user
+		<set>
+			<if test="username != null">
+				f_username = #{username},
+			</if>
+			<if test="realname != null">
+				f_realname = #{realname},
+			</if>
+			<if test="password != null">
+				f_password = #{password},
+			</if>
+			<if test="phonenum != null">
+				f_phonenum = #{phonenum},
+			</if>
+			<if test="email != null">
+				f_email = #{email},
+			</if>
+			<if test="sex != null">
+				f_sex = #{sex},
+			</if>
+			<if test="registerTime != null">
+				f_register_time = #{registerTimeP},
+			</if>
+			<if test="portriat != null">
+				f_portriat = #{portriat},
+			</if>
+			<if test="remarks != null">
+				f_remarks = #{remarks},
+			</if>
+			<if test="lastLogintime != null">
+				f_last_logintime = #{lastLogintime},
+			</if>
+			<if test="status != null">
+				f_status = #{status},
+			</if>
+		</set>
+		where f_id = #{id}
+	</update>
+	
+	<insert id="allowPermission" >
+		insert into t_cp_model_user_relevance values(
+			#{userId},
+			#{modelId},
+			#{modelCode}
+		)
+	</insert>
+
+	<delete id="notAllowPermission">
+		delete from t_cp_model_user_relevance where f_uid = #{userId} and f_model_id = #{modelId}
+	</delete>
+	
+	<delete id="deleteAllPermission">
+		delete from t_cp_model_user_relevance where f_uid = #{userId}
+	</delete>
+	
+	<insert id="insertPermissions" parameterType="cn.heipiao.cp.shiro.pojo.Role">
+		insert into t_cp_model_user_relevance values
+		<foreach collection="list" item="item" index="index" separator="," >
+		( 
+        	#{item.userId},
+			#{item.modelId},
+			#{item.modelCode}
+		)
+   		</foreach> 
+		
+	</insert>
+
+	<!-- <update id="updateByPrimaryKey" parameterType="cn.heipiao.cp.shiro.pojo.User" 
+		> update t_cp_user set f_username = #{username,jdbcType=VARCHAR}, f_realname 
+		= #{realname,jdbcType=VARCHAR}, f_password = #{password,jdbcType=VARCHAR}, 
+		f_phonenum = #{phonenum,jdbcType=VARCHAR}, f_email = #{email,jdbcType=VARCHAR}, 
+		f_sex = #{sex,jdbcType=CHAR}, f_register_time = #{registerTime,jdbcType=TIMESTAMP}, 
+		f_portriat = #{portriat,jdbcType=VARCHAR}, f_remarks = #{remarks,jdbcType=VARCHAR}, 
+		f_last_logintime = #{lastLogintime,jdbcType=TIMESTAMP}, f_status = #{status,jdbcType=CHAR} 
+		where f_id = #{id,jdbcType=INTEGER} </update> 
+		<insert id="insertSelective" 
+		parameterType="cn.heipiao.cp.shiro.pojo.User" >
+		 insert into t_cp_user <trim prefix="(" suffix=")" suffixOverrides="," > 
+		 <if test="id != null" > f_id, </if>
+		  <if test="username != null" > f_username, </if> 
+		  <if test="realname != null" > f_realname, </if> 
+		  <if test="password != null" > f_password, </if> 
+		<if test="phonenum != null" > f_phonenum, </if> 
+		<if test="email != null" > f_email, </if> 
+		<if test="sex != null" > f_sex, </if> 
+		<if test="registerTime != null" > f_register_time, </if> <if test="portriat != null" > f_portriat, 
+		</if> <if test="remarks != null" > f_remarks, </if> <if test="lastLogintime 
+		!= null" > f_last_logintime, </if> <if test="status != null" > f_status, 
+		</if> </trim> <trim prefix="values (" suffix=")" suffixOverrides="," > <if 
+		test="id != null" > #{id,jdbcType=INTEGER}, </if> <if test="username != null" 
+		> #{username,jdbcType=VARCHAR}, </if> <if test="realname != null" > #{realname,jdbcType=VARCHAR}, 
+		</if> <if test="password != null" > #{password,jdbcType=VARCHAR}, </if> <if 
+		test="phonenum != null" > #{phonenum,jdbcType=VARCHAR}, </if> <if test="email 
+		!= null" > #{email,jdbcType=VARCHAR}, </if> <if test="sex != null" > #{sex,jdbcType=CHAR}, 
+		</if> <if test="registerTime != null" > #{registerTime,jdbcType=TIMESTAMP}, 
+		</if> <if test="portriat != null" > #{portriat,jdbcType=VARCHAR}, </if> <if 
+		test="remarks != null" > #{remarks,jdbcType=VARCHAR}, </if> <if test="lastLogintime 
+		!= null" > #{lastLogintime,jdbcType=TIMESTAMP}, </if> <if test="status != 
+		null" > #{status,jdbcType=CHAR}, </if> </trim> </insert> -->
+
+</mapper>

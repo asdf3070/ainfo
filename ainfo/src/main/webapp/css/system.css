@@ -1,0 +1,323 @@
+.page_body {
+    overflow: scroll;
+    width: 100%;
+    height: 100%;
+    border: #eee solid 1px;
+}
+.total_panel {
+    background-color: #FFFFFF;
+    /*height: 198px;*/
+    height: 20%;
+    margin: 80px 30px 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px -2px;
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 15px;
+}
+.status {
+    width: 100%;
+    height: 100%;
+}
+.status_info_area {
+    width: 70%;
+    height: 100%;
+    border-right: #E6E6E6 solid 1px;
+    float: left;
+    position: relative;
+}
+.run_img_first {
+    background-color: #80E680;
+    width: 100px;
+    height: 100px;
+    margin: 1% 4%;
+    padding: 18px;
+    border-radius: 70px;
+}
+.run_img_second {
+    background-color: #00CC00;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    position: relative;
+}
+.run_info {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    color: white;
+}
+.run_status_01 {
+    top: 10%;
+    left: 200px;
+}
+.run_status_02 {
+    top: 40%;
+    left: 220px;
+}
+.run_status_03 {
+    top: 70%;
+    left: 200px;
+}
+.status_button_area {
+    width: 29%;
+    height: 100%;
+    float: right;
+}
+.status_button {
+    background-color: #777;
+    color: white;
+    border-radius: 5px;
+    margin: 15% 0px 0px 15%;
+    padding: 25px 0px 0px 25%;
+    height: 25%;
+    width: 40%;
+    cursor: pointer;
+}
+
+
+.validate_title {
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    margin-top: 25px;
+}
+.validate_content {
+    margin: 1% -5px;
+    overflow: hidden;
+}
+input#u2530_input {
+    float: left;
+    margin: 5px;
+    padding: 1px 0px 1px 0px;
+    box-sizing: border-box;
+    width: 421px;
+    height: 42px;
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: left;
+    border-color: rgba(0, 0, 0, 0.11);
+    outline-style: none;
+    color: rgb(153, 153, 153);
+}
+.validate_button {
+    background-color: #777;
+    color: white;
+    border-radius: 5px;
+    margin: -1px 0px 0px 109px;
+    padding: 16px 43px 16px 72px;
+    height: 23px;
+    width: 80px;
+    cursor: pointer;
+    float: left;
+}
+.validate_prompt {
+	font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: #FF6633;
+}
+
+
+.status_title {
+    background-color: red;
+    border-radius: 5px;
+    width: 15px;
+    height: 80px;
+    margin: 8% 7px 0px 12px;
+    padding: 5px;
+    float: left;
+    color: white;
+}
+#change_input {
+    margin: 1%;
+    width: 84%;
+    height: 89%;
+    font-family: '微软雅黑 Regular', '微软雅黑';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    text-decoration: none;
+    color: rgb(153, 153, 153);
+    text-align: left;
+    border-color: rgba(0, 0, 0, 0.12);
+    outline-style: none;
+}
+#change_reason_area {
+    margin: 1%;
+    width: 85%;
+    height: 92%;
+    border: rgba(0, 0, 0, 0.12) solid 1px;
+    float: left;
+}
+.change_reason_items {
+    float: left;
+    margin: 5px;
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(204, 204, 204, 0.48); 
+    color: #000;
+    cursor: pointer;
+}
+.items_select {
+    background-color: rgb(206, 216, 218);
+}
+
+
+
+
+.title_content_area {
+    margin: 80px 30px 20px 26px;
+    color: #eee;
+}
+.tc_title {
+    background-color: #707070;
+    height: 30px;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: 10px;
+    text-align: center;
+    position: relative;
+}
+.tc_title font {
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-weight: 900;
+    font-style: normal;
+    font-size: 15px;
+}
+.put_open_button {
+    background-color: #999999;
+    width: 30px;
+    height: 30px;
+    float: right;
+    border-radius: 15px;
+    margin-right: 10px;
+    margin-top: -5px;
+    cursor: pointer;
+}
+.po_gt {
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.po_put {
+    transform: rotate(90deg);
+    margin-top: 5px;
+    margin-left: -1px;
+}
+.po_open {
+    transform: rotate(270deg);
+    margin-top: 3px;
+    margin-left: 1px;
+}
+.plus_button {
+    background-color: #999999;
+    width: 30px;
+    height: 30px;
+    float: left;
+    border-radius: 15px;
+    margin-left: 7px;
+    margin-top: -5px;
+    cursor: pointer;
+    position: absolute;
+    top: 11px;
+}
+.p_plus {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -2px;
+    margin-left: -1px;
+}
+.tc_content {
+    border-style: dotted;
+    border-color: #5A5A5A;
+    border-width: thin;
+    height: 0px;
+    overflow: hidden;
+}
+.tc_content_line {
+    width: 100%;
+    height: 35px;
+    float: left;
+    border-top-style: dotted;
+    border-top-color: #5A5A5A;
+    border-top-width: thin;
+    padding-top: 5px;
+}
+.point {
+    background-color: #00CCFF;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin: 10px;
+    float: left;
+}
+.tc_text {
+	color: #000000;
+    font-family: '微软雅黑 Bold', '微软雅黑';
+    font-weight: 700;
+    font-style: normal;
+    font-size: 20px;
+}
+.switch_button {
+    position: relative;
+    background-color: #00CC00;
+    width: 50px;
+    height: 30px;
+    float: right;
+    margin: 0px 15px;
+    border-radius: 15px;
+    border: #00CC00 solid 1px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.sb_switch_bar {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: white;
+    height: 25px;
+    width: 46px;
+    border-radius: 20px;
+}
+.sb_switch {
+    position: absolute;
+    left: -2px;
+    top: -1px;
+    width: 26px;
+    height: 26px;
+    background: white;
+    border-radius: 15px;
+    border: #00CC00 solid 1px;
+}
+
+.c777 {
+    background-color: #777;
+}
+.radius {
+    padding: 5px;
+    border-radius: 5px;
+}
+.close {
+    position: absolute;
+    top: 5%;
+    left: 95%;
+    background: red;
+    width: 21px;
+    height: 21px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.dInput {
+	width: 250px;
+	height: 25px;
+	border: rgba(212, 212, 212, 0.68) solid 1px;
+}

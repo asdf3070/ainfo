@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+	#qrcode {
+		width:160px;
+		height:160px;
+		margin-top:15px;
+	}
+  </style>
+<script type="text/javascript" src ="../../../js/global/lib/qrcode.js"></script>
+  <script type="text/javascript">
+	
+	var u = navigator.userAgent;
+	alert(u);
+	var platform = navigator.platform;
+	var appCodeName = navigator.appCodeName;
+	var appName = navigator.appName;
+	var appVersion = navigator.appVersion;
+	console.log(platform);
+	console.log(appCodeName);
+	console.log(appName);
+	console.log(appVersion);
+	//var qrcode = new QRCode();
+function makeCode () {
+	//console.log(document.getElementById("qrcode"));
+	var e = document.getElementById("qrcode");
+	document.getElementById("platform").value=platform;
+	document.getElementById("appCodeName").value=appCodeName;
+	document.getElementById("appName").value=appName;
+	document.getElementById("appVersion").value=appVersion;
+	var len=0;
+	do{
+		len=e.childNodes.length;
+		if(len > 0)
+			remove(e);
+		}while(len > 0);
+
+	var qrcode = new QRCode(e,{width : 300, 
+			height : 300});
+    var elText = document.getElementById("text");
+    
+	
+
+    if (!elText.value) {
+        alert("Input a text");
+        elText.focus();
+        return;
+    }
+    //document.getElementById("text").value=elText.value;
+    qrcode.makeCode(elText.value);
+}
+
+//makeCode();
+
+//$("#text").
+  //  on("blur", function () {
+    //    makeCode();
+    //}).
+    //on("keydown", function (e) {
+    //    if (e.keyCode == 13) {
+     //       makeCode();
+    //    }
+    //});
+	function q(){
+		var e = event || window.event;	
+		console.log(e.keyCode);
+		if(e.keyCode == 13)
+			makeCode();
+	}
+	
+
+	function remove(e){
+		var os = e.childNodes;
+		for(i=0; i<os.length; i++){
+		console.log(e.childNodes[i].nodeName);
+		e.removeChild(e.childNodes[i]);
+		}
+		return;
+	}
+
+
+function testPhone(){
+	var str="12345678901";
+	var patt1=/\d{11}/g; 
+	if(str){
+		var b = patt1.test(str) && str.length == 11;
+		document.write(b);
+	}
+}
+
+  </script>
+ </head>
+ <body onload="makeCode()">
+	<input id="text" type="text" onblur="makeCode()" onkeydown="q()"  value="hello world" style="width:80%" /><br />
+	<input id="platform" type="text"  value="hello world" style="width:80%" /><br />
+	<input id="appCodeName" type="text"  value="hello world" style="width:80%" /><br />
+	<input id="appName" type="text"  value="hello world" style="width:80%" /><br />
+	<input id="appVersion" type="text"  value="hello world" style="width:80%" /><br />
+	<div id="qrcode"></div>
+
+	<div id="userAgent"></div>
+ </body>
+</html>

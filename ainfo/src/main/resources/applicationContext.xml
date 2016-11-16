@@ -1,0 +1,144 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<!-- 加载配置 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="fileEncoding" value="UTF-8" /> 
+	    <property name="locations">  
+	       <list>  
+	          <value>file:${hp.config}/init.properties</value>  
+	          <value>classpath:/config/main.properties</value>  
+	        </list>  
+	    </property> 
+	</bean>
+	
+	<bean class="cn.heipiao.cp.core.spring.extend.ApplicationContenxUtils">
+	</bean>
+	
+	<bean class="cn.heipiao.cp.core.spring.extend.Config" id="HeiPiaoconfig">
+		 <property name="mapCfg">
+            <map>
+            	<!-- 环境（生产或非生产） -->
+            	<entry key="henv" value="${henv}" />
+            	<!-- 版本 -->
+            	<entry key="heipiao_cp_version" value="${heipiao_cp_version}" />
+            	<!-- cp 服务器 ip地址 -->
+            	<entry key="heipiao.cp.ip" value="${heipiao.cp.ip}" />
+            	<!-- api 服务器 ip地址 -->
+                <entry key="heipiao.api.addr" value="${heipiao.api.addr}" />
+                
+            	<!-- /sys/param接口需要处理的列表 -->
+                <entry key="system.param.list" value="${system.param.list}" />
+            	<!-- 钓场主图/图片/视频 -->
+                <entry key="RES_PROC_URL" value="${RES_PROC_URL}" />
+            	<!-- 钓场动态（放鱼、鱼获、攻略） -->
+                <entry key="RES_DYNA_URL" value="${RES_DYNA_URL}" />
+            	<!-- 用户头像 -->
+                <entry key="RES_PORT_URL" value="${RES_PORT_URL}" />
+            	<!-- 发现图标 -->
+                <entry key="RES_DISC_URL" value="${RES_DISC_URL}" />
+            	<!-- 钓场主推广链接 -->
+                <entry key="RES_SITES_AUTO_INFO" value="${RES_SITES_AUTO_INFO}" />
+                
+                
+                <!-- 超时订单 -->
+                <entry key="api.outtime.order" value="${api.outtime.order}" />
+                <!-- 商品销量统计 -->
+                <entry key="api.sales.volume" value="${api.sales.volume}" />
+                <!-- 提现审核审核提醒 -->
+                <entry key="api.present.audit" value="${api.present.audit}" />
+                <!-- 送券 -->
+                <entry key="api.ticket" value="${api.ticket}" />
+                <!-- 报表统计 -->
+                <entry key="api.froms" value="${api.froms}" />
+                <!-- 看板运营 -->
+                <entry key="api.board" value="${api.board}" />
+            </map>
+        </property>
+	</bean>
+
+	<!-- 包扫描 -->
+	<context:component-scan base-package="cn.heipiao.cp" />
+	
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+		<property name="driverClass" value="${cp.jdbc.driverClass}" />
+		
+		<!-- 测试环境-->
+		<property name="jdbcUrl" value="${cp.jdbc.jdbcUrl}" />
+		<property name="username" value="${cp.jdbc.username}" />
+		<property name="password" value="${cp.jdbc.password}" /> 
+		
+		
+		<!-- 分区数 ，默认值2，最小1，推荐3-4，视应用而定 -->
+		<property name="partitionCount" value="${cp.jdbc.partitionCount}" />
+		<!-- 每个分区最大的连接数 -->
+		<property name="maxConnectionsPerPartition" value="${cp.jdbc.maxConnectionsPerPartition}" />
+		<!-- 每个分区最小的连接数 -->
+		<property name="minConnectionsPerPartition" value="${cp.jdbc.minConnectionsPerPartition}" />
+		<!-- 检查数据库连接池中空闲连接的间隔时间，单位是分，默认值：240，如果要取消则设置为0 -->
+<!-- 		<property name="idleConnectionTestPeriod" value="${cp.jdbc.idleConnectionTestPeriod}" /> -->
+		<!-- 连接池中未使用的链接最大存活时间，单位是分，默认值：60，如果要永远存活设置为0 -->
+<!-- 		<property name="idleMaxAge" value="${jdb.idleMaxAge}" /> -->
+		<!-- 每次去拿数据库连接的时候一次性要拿几个,默认值：1 -->
+		<property name="acquireIncrement" value="${cp.jdbc.acquireIncrement}" />
+		<!-- 缓存prepared statements的大小，默认值：0 -->
+		<property name="statementsCacheSize" value="${cp.jdbc.statementsCacheSize}" />
+		<!-- 每个分区释放链接助理进程的数量，默认值：3，除非你的一个数据库连接的时间内做了很多工作，不然过多的助理进程会影响你的性能 
+		<property name="releaseHelperThreads" value="${cp.jdbc.releaseHelperThreads}" />-->
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="mapperLocations" value="classpath*:mapper/*Mapper.xml"/>
+	</bean>
+
+	<!-- mybatis自动映射mapper -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.heipiao.**.mapper" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- service的查询事务控制 -->
+    <tx:advice id="serviceAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="list*" read-only="true" />
+			<tx:method name="set*" propagation="REQUIRED"/>
+			<tx:method name="insert*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="delete*" propagation="REQUIRED"/>
+			<tx:method name="remove*" propagation="REQUIRED"/>
+			<tx:method name="*TX" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- mybatis mapper查询事务控制 -->
+	<tx:advice id="mapperAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="count*" read-only="true" />
+			<tx:method name="select*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="servicePointcut" expression="execution(* cn.heipiao.*.service.*.*Service*.*(..))" />
+		<aop:pointcut id="mapperPointcut" expression="execution(* cn.heipiao.*.mapper.*Mapper.*(..))" />
+		<aop:advisor advice-ref="serviceAdvice" pointcut-ref="servicePointcut" />
+		<aop:advisor advice-ref="mapperAdvice" pointcut-ref="mapperPointcut" />
+	</aop:config>
+	
+</beans>

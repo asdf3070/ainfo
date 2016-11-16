@@ -1,0 +1,476 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title></title>
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" href="../../images/login_images/favicon.ico" />
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/bootstrap/easyui.css" />
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../js/global/lib/easyui/themes/icon.css" />
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/global.css" />
+<link rel="stylesheet" type="text/css" charset="utf-8" href="../../css/team.css" />
+
+<script type="text/javascript" src="../../js/global/lib/jquery-1.10.1.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/lib/easyui/jquery.easyui.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="../../js/global/call.js" charset="utf-8"></script> 
+<script type="text/javascript" src="../../js/global/global.js" charset="utf-8"></script> 
+<script type="text/javascript" src="../../js/global/eimp-ajax.js" charset="utf-8"></script>
+</head>
+<body class="easyui-layout">
+	<div class="slable_area">
+		<div class="slable" onclick="statusGet('_', this)">
+			<span>全部</span>
+		</div>
+		<div class="slable" onclick="statusGet('1', this)">
+			<span>正常</span>
+		</div>
+		<div class="slable" onclick="statusGet('0', this)">
+			<span>禁用</span>
+		</div>
+		<div class="slable" onclick="statusGet('2', this)">
+			<span>离职</span>
+		</div>
+	</div>
+	<!-- 团 队成员 -->
+	<div id="u499" class="ax_default box_1">
+		<div id="u499_div" class=""></div>
+		<!-- Unnamed () -->
+		<div id="u500" class="text" style="visibility: visible;">
+			<p>
+				<span>团 队 成 员</span>
+			</p>
+		</div>
+	</div>
+	<div id="u585" class="ax_default icon normal" style="cursor: pointer;" onclick="editAuthentication()">
+		<img id="u585_img" class="img" src="../../images/team_images/u585.png"
+			style="outline: none;" />
+		<!-- Unnamed () -->
+		<div id="u586" class="text" style="display: none; visibility: hidden">
+			<p id="cache74">
+				<span id="cache75"></span>
+			</p>
+		</div>
+	</div>
+	<div id="u516" class="ax_default icon normal" style="cursor: pointer;" onclick="showSearch()">
+		<img id="u516_img" class="img" src="../../images/team_images/u329.png" />
+		<!-- Unnamed () -->
+		<div id="u517" class="text" style="display: none; visibility: hidden">
+			<p id="cache108">
+				<span id="cache109"></span>
+			</p>
+		</div>
+	</div>
+	<!-- 团队成员搜索面板 visible -->
+	<div id="u501" class="ax_default"
+		style="width: auto; height: auto; z-index: 1002;">
+		<div id="u501_state0" class="panel_state"
+			style="width: 233px; height: 42px;">
+			<div id="u501_state0_content" class="panel_state_content">
+				<!-- Unnamed (矩形) -->
+				<div id="u502" class="ax_default box_1">
+					<div id="u502_div" class=""></div>
+					<!-- Unnamed () -->
+					<div id="u503" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 会员搜索 (文本框) -->
+				<div id="u504" class="ax_default text_field">
+					<input id="u504_input" type="text" value="" title="回车进行搜索"
+						style="color: rgb(153, 153, 153);" />
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="u488" class="ax_default" style="left: 28px; top: 122px;">
+
+		<!-- 团队成员列表 , 通过js动态查询 -->
+
+	</div>
+
+	<div id="u524" class="ax_default icon">
+		<img id="u524_img" class="img "
+			src="../../images/team_images/u524.png" />
+		<!-- Unnamed () -->
+		<div id="u525" class="text" style="display: none; visibility: hidden">
+			<p>
+				<span></span>
+			</p>
+		</div>
+	</div>
+	<!-- 成员详情 -->
+	<input id="userId" type="hidden" value="" />
+	<div id="u522" class="ax_default box_1">
+		<div id="u522_div" class=""></div>
+		<!-- Unnamed () -->
+		<div id="u523" class="text" style="display: none; visibility: hidden">
+			<p>
+				<span></span>
+			</p>
+		</div>
+	</div>
+	<div id="u619" class="ax_default image normal" style="cursor: pointer;">
+		<div class="check_main_field_header" style="width:40px; height:40px; margin: 0px 0px 0px 18px;">
+			<img id="headImg" src="" onload="imgLoad(this)" />
+		</div>
+	</div>
+	<div id="u617" class="ax_default button normal" style="cursor: pointer;" onclick="forbidden()">
+		<img id="u617_img" class="img" src="../../images/team_images/u617.png" />
+		<!-- Unnamed () -->
+		<div id="u618" class="text" style="visibility: visible;">
+			<p id="cache92">
+				<span id="cache93">禁&nbsp; 用</span>
+			</p>
+		</div>
+	</div>
+	<div id="u621" class="ax_default button normal" style="cursor: pointer;" onclick="dimission()">
+		<img id="u621_img" class="img" src="../../images/team_images/u617.png" />
+		<!-- Unnamed () -->
+		<div id="u622" class="text" style="visibility: visible;">
+			<p id="cache110">
+				<span id="cache111">离&nbsp; 职</span>
+			</p>
+		</div>
+	</div>
+	<div id="u621" class="ax_default button normal" style="cursor: pointer;left: 599px;" onclick="updatePassword()">
+		<img id="u621_img" class="img" src="../../images/team_images/u617.png" />
+		<!-- Unnamed () -->
+		<div id="u622" class="text" style="visibility: visible;">
+			<p id="cache110">
+				<span id="cache111">修改密码</span>
+			</p>
+		</div>
+	</div>
+	<!-- <div id="updatePwd" class="ax_default button normal" style="cursor: pointer;" onclick="updatePassword()">
+		<img id="u621_img" class="img" src="../../images/team_images/u617.png" />
+		Unnamed ()
+		<div id="u622" class="text" style="visibility: visible;">
+			<p id="cache110">
+				<span id="cache111">修改密码</span>
+			</p>
+		</div>
+	</div> -->
+	
+	<div id="u587" class="ax_default icon normal" style="cursor: pointer;">
+		<img id="u587_img" class="img" src="../../images/team_images/u587.png" onclick="saveUser()" />
+		<!-- Unnamed () -->
+		<div id="u588" class="text" style="display: none; visibility: hidden">
+			<p id="cache130">
+				<span id="cache131"></span>
+			</p>
+		</div>
+	</div>
+	<div id="u520" class="ax_default box_1">
+		<div id="u520_div" class=""></div>
+		<!-- Unnamed () -->
+		<div id="u521" class="text" style="display: none; visibility: hidden">
+			<p>
+				<span></span>
+			</p>
+		</div>
+	</div>
+	<!-- 成员信息-姓名 -->
+	<div id="u528" class="ax_default">
+		<div id="u528_state0" class="panel_state"
+			style="width: 401px; height: 42px;">
+			<div id="u528_state0_content" class="panel_state_content">
+				<!-- Unnamed (矩形) -->
+				<div id="u529" class="ax_default box_1">
+					<div id="u529_div" class=""></div>
+					<!-- Unnamed () -->
+					<div id="u530" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 姓名 (文本框) -->
+				<div id="u531" class="ax_default text_field">
+					<input id="u531_input" type="text" value=""
+						style="color: rgb(153, 153, 153);" />
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u532" class="ax_default line">
+					<img id="u532_img" class="img "
+						src="../../images/team_images/u532.png" />
+					<!-- Unnamed () -->
+					<div id="u533" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u536" class="ax_default icon">
+					<img id="u536_img" class="img "
+						src="../../images/team_images/u536.png" />
+					<!-- Unnamed () -->
+					<div id="u537" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u538" class="ax_default button normal" onclick="getGroups()">
+		<div id="u538_div" class="normal"></div>
+		<!-- Unnamed () -->
+		<div id="u539" class="text" style="visibility: visible;">
+			<p id="cache116">
+				<span id="sex" onclick="changeSex(this)">男</span>
+			</p>
+		</div>
+	</div>
+	<!-- <div id="u540" class="ax_default button normal">
+		<div id="u540_div" class="normal"></div>
+		Unnamed ()
+		<div id="u541" class="text" style="visibility: visible;">
+			<p id="cache112">
+				<span id="cache113">女</span>
+			</p>
+		</div>
+	</div> -->
+	<div id="u542" class="ax_default">
+		<div id="u542_state0" class="panel_state"
+			style="width: 401px; height: 42px;">
+			<div id="u542_state0_content" class="panel_state_content">
+				<!-- Unnamed (矩形) -->
+				<div id="u543" class="ax_default box_1">
+					<div id="u543_div" class=""></div>
+					<!-- Unnamed () -->
+					<div id="u544" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 手机 (文本框) -->
+				<div id="u545" class="ax_default text_field">
+					<input id="u545_input" type="text" value=""
+						style="color: rgb(153, 153, 153);" />
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u546" class="ax_default line">
+					<img id="u546_img" class="img "
+						src="../../images/team_images/u532.png" />
+					<!-- Unnamed () -->
+					<div id="u547" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u550" class="ax_default icon">
+					<img id="u550_img" class="img "
+						src="../../images/team_images/u550.png" />
+					<!-- Unnamed () -->
+					<div id="u551" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 成员信息-电子邮箱 -->
+	<div id="u552" class="ax_default">
+		<div id="u552_state0" class="panel_state"
+			style="width: 401px; height: 42px;">
+			<div id="u552_state0_content" class="panel_state_content">
+				<!-- Unnamed (矩形) -->
+				<div id="u553" class="ax_default box_1">
+					<div id="u553_div" class=""></div>
+					<!-- Unnamed () -->
+					<div id="u554" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 邮箱 (文本框) -->
+				<div id="u555" class="ax_default text_field">
+					<input id="u555_input" type="text" value=""
+						style="color: rgb(153, 153, 153);" />
+				</div>
+				<!-- Unnamed (垂直线) -->
+				<div id="u556" class="ax_default line">
+					<img id="u556_img" class="img "
+						src="../../images/team_images/u532.png" />
+					<!-- Unnamed () -->
+					<div id="u557" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u560" class="ax_default icon" title="订阅系统提醒将用此邮箱">
+					<img id="u560_img" class="img "
+						src="../../images/team_images/u560.png" />
+					<!-- Unnamed () -->
+					<div id="u561" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u562" class="ax_default" style="cursor: pointer;">
+		<div id="u562_state0" class="panel_state"
+			style="width: 401px; height: 202px;">
+			<div id="u562_state0_content" class="panel_state_content">
+				<!-- Unnamed (矩形) -->
+				<div id="u563" class="ax_default box_1">
+					<div id="u563_div" class=""></div>
+					<!-- Unnamed () -->
+					<div id="u564" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 群组 (文本框) -->
+				<div id="u565" class="ax_default text_field">
+					<input id="u565_input" type="text" value=""
+						style="color: rgb(153, 153, 153);" />
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u566" class="ax_default icon">
+					<img id="u566_img" class="img "
+						src="../../images/team_images/u566.png" />
+					<!-- Unnamed () -->
+					<div id="u567" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (矩形) -->
+				<div id="u568" class="ax_default box_1">
+					<div id="u568_div">
+						<!-- <div class="items" onmouseover="groupOnMouseOver(this)">
+							黑漂市场部
+						</div>
+						<div class="items" onmouseover="groupOnMouseOver(this)">
+							黑漂运营部
+						</div>
+						<div class="items" onmouseover="groupOnMouseOver(this)">
+							黑漂开发部
+						</div> -->
+					</div>
+				</div>
+				
+				<!-- 会员标签组 (中继器) -->
+				<div id="u570" class="ax_default">
+				</div>
+				
+				<!-- Unnamed (矩形) -->
+				<div id="u573" class="ax_default label disabled">
+					<div id="u573_div" class="disabled"></div>
+					<!-- Unnamed () -->
+					<div id="u574" class="text" style="visibility: visible;">
+						<p id="cache6">
+							<span id="cache7" style="color: rgb(153, 153, 153);">群 组</span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 成员信息-备注 -->
+	<div id="u575" class="ax_default" style="cursor: pointer;">
+		<div id="u575_state0" class="panel_state"
+			style="width: 401px; height: 130px;">
+			<div id="u575_state0_content" class="panel_state_content">
+				<!-- Unnamed (矩形) -->
+				<div id="u576" class="ax_default box_1">
+					<div id="u576_div" class=""></div>
+					<!-- Unnamed () -->
+					<div id="u577" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- Unnamed (矩形) -->
+				<div id="u578" class="ax_default box_1">
+					<div id="u578_div" class=""></div>
+					<!-- Unnamed () -->
+					<div id="u579" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+				<!-- 备注 (多行文本框) -->
+				<div id="u580" class="ax_default text_area">
+					<textarea id="u580_input" style="color: rgb(153, 153, 153);" onblur="changgeRemarks(this)" ></textarea>
+				</div>
+				<!-- Unnamed (形状) -->
+				<div id="u581" class="ax_default icon">
+					<img id="u581_img" class="img "
+						src="../../images/team_images/u581.png" />
+					<!-- Unnamed () -->
+					<div id="u582" class="text"
+						style="display: none; visibility: hidden">
+						<p>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="u526" class="ax_default icon">
+		<img id="u526_img" class="img "
+			src="../../images/team_images/u524.png" />
+		<!-- Unnamed () -->
+		<div id="u527" class="text" style="display: none; visibility: hidden">
+			<p>
+				<span></span>
+			</p>
+		</div>
+	</div>
+	<!-- 成员权限 -->
+	<div id="u518" class="ax_default box_1">
+		<div id="u518_div" class=""></div>
+		<!-- Unnamed () -->
+		<div id="u519" class="text" style="visibility: visible;">
+			<p>
+				<span>成 员 权 限</span>
+			</p>
+		</div>
+	</div>
+	<!-- 模块菜单 -->
+	<div id="u505">
+		<!--动态加载权限-->
+	</div>
+	
+	<script type="text/javascript" src="../../js/team/team.js"
+		charset="utf-8"></script>
+</body>
+</html>
